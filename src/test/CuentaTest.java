@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
 import pkg.Cuenta;
 
 class CuentaTest {
-	Cuenta ctaPruebas;
+	static Cuenta ctaPruebas;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		ctaPruebas = new Cuenta();
+		ctaPruebas = new Cuenta(0);
 	}
 
 	@AfterAll
@@ -24,6 +24,7 @@ class CuentaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		ctaPruebas.setSaldo(0);
 	}
 
 	@AfterEach
@@ -31,15 +32,27 @@ class CuentaTest {
 	}
 
 	@Test
+	void testRetirar() {
+		ctaPruebas.retirar(3000);
+		assertEquals(-3000, ctaPruebas.getSaldo());
+	}
+	
+	@Test
 	void testIngresar() {
 		ctaPruebas.ingresar(3000);
 		assertEquals(3000, ctaPruebas.getSaldo());
 	}
+	
+	/*
+	 * no puedo retirar dinero si no lo tengo (nuevo caso de pruebas)
+	 */
+	
+	/*
+	 * añadimos la clase movimiento H(HAY) D(se añade a la lista de movimiento)
+	 * ingresar y retirar van a ir acompañados de lo de movimiento
+	 */
+	
 
-	@Test
-	void testRetirar() {
-		ctaPruebas.retirar(3000);
-		assertEquals(0, ctaPruebas.getSaldo());
-	}
+	
 
 }
