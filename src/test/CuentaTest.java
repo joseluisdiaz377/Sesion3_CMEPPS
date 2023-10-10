@@ -48,9 +48,11 @@ class CuentaTest {
 	 */
 	
 	/*
-	 * añadimos la clase movimiento H(HAY) D(se añade a la lista de movimiento)
+	 * añadimos la clase movimiento H(ingreso) D(reintegro)
 	 * ingresar y retirar van a ir acompañados de lo de movimiento
 	 */
+	
+	
 	
 
 	

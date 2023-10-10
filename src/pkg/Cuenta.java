@@ -2,6 +2,9 @@ package pkg;
 
 public class Cuenta {
 	private double saldo;
+	private String titular;
+	private String numero;
+	
 
 	public Cuenta(int saldo) {
 		super();
