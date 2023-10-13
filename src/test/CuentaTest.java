@@ -74,7 +74,7 @@ class CuentaTest {
 		assertFalse(cta67890.retirar(150)); //igual 
 		cta67890.ingresar(50); 
 		assertEquals(50, cta67890.getSaldo()); //debe haber 50
-		assertFalse(cta67890.retirar(100)); //no hay para sacar 100
+		assertFalse(cta67890.retirar(100)); //no hay para sacar 100 
 
 
 	}
