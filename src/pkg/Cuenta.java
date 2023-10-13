@@ -1,13 +1,16 @@
 package pkg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cuenta {
 	private double saldo;
-	private String titular;
-	private String numero;
+	private List<Movimiento> movimientos;
 
 	public Cuenta(int saldo) {
 		super();
 		this.saldo = saldo;
+		this.movimientos = new ArrayList<>();
 	}
 
 	public double getSaldo() {
@@ -19,15 +22,19 @@ public class Cuenta {
 	}
 
 	public void ingresar(double i) {
-		this.setSaldo(this.getSaldo() + i);
+		saldo += i;
+		Movimiento movimiento = new Movimiento(i, "Ingreso", "H");
+		movimientos.add(movimiento);
 	}
 
 	public boolean retirar(double i) {
-		if (saldo < i) {
-			return false;
-		} else {
-			this.setSaldo(this.getSaldo() - i);
+		if (saldo - i >= -500) {
+			saldo -= i;
+			Movimiento movimiento = new Movimiento(i, "Reintegro", "D");
+			movimientos.add(movimiento);
 			return true;
+		} else {
+			return false;
 		}
 
 	}
