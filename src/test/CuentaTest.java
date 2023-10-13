@@ -83,8 +83,7 @@ class CuentaTest {
 		cta67890.ingresar(50);
 		assertEquals(-450, cta67890.getSaldo());
 		
-		assertFalse(cta67890.retirar(100)); //no se puede porque quedaría en -550
-
+		assertFalse(cta67890.retirar(100)); //no se puede porque quedaría en -550 
 	}
 
 }
