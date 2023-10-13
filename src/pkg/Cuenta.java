@@ -4,7 +4,6 @@ public class Cuenta {
 	private double saldo;
 	private String titular;
 	private String numero;
-	
 
 	public Cuenta(int saldo) {
 		super();
@@ -23,8 +22,13 @@ public class Cuenta {
 		this.setSaldo(this.getSaldo() + i);
 	}
 
-	public void retirar(double i) {
-		this.setSaldo(this.getSaldo() - i);
+	public boolean retirar(double i) {
+		if (saldo < i) {
+			return false;
+		} else {
+			this.setSaldo(this.getSaldo() - i);
+			return true;
+		}
 
 	}
 

@@ -12,6 +12,7 @@ import pkg.Cuenta;
 
 class CuentaTest {
 	static Cuenta ctaPruebas;
+	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -24,7 +25,7 @@ class CuentaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		ctaPruebas.setSaldo(0);
+		ctaPruebas.setSaldo(3000);
 	}
 
 	@AfterEach
@@ -34,26 +35,21 @@ class CuentaTest {
 	@Test
 	void testRetirar() {
 		ctaPruebas.retirar(3000);
-		assertEquals(-3000, ctaPruebas.getSaldo());
+		assertEquals(0, ctaPruebas.getSaldo());
 	}
-	
+
 	@Test
 	void testIngresar() {
 		ctaPruebas.ingresar(3000);
-		assertEquals(3000, ctaPruebas.getSaldo());
+		assertEquals(6000, ctaPruebas.getSaldo());
 	}
 	
-	/*
-	 * no puedo retirar dinero si no lo tengo (nuevo caso de pruebas)
-	 */
-	
-	/*
-	 * añadimos la clase movimiento H(ingreso) D(reintegro)
-	 * ingresar y retirar van a ir acompañados de lo de movimiento
-	 */
-	
-	
-	
+	@Test
+	void testRetirarSinSaldo() {
+		assertTrue(ctaPruebas.retirar(4000));  //tiene que dar false porque no hay saldo suficiente	
+//		assertTrue(ctaPruebas.retirar(3000));  //tiene que dar true porques hay saldo suficiente		
+
+	}
 
 	
 
