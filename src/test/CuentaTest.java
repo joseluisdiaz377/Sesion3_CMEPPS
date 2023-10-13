@@ -57,25 +57,33 @@ class CuentaTest {
 	@Test
 	void test0014_12345() {
 
-		assertFalse(cta12345.retirar(200)); //tiene que dar false porq no hay suficiente dinero para sacar
-		cta12345.ingresar(100);
-		assertEquals(150, cta12345.getSaldo()); //tiene que haber 150
-		assertFalse(cta12345.retirar(200)); //tiene que dar false porq no hay fondos
+		cta12345.retirar(200);
+		assertEquals(-150, cta12345.getSaldo());
 		
+		cta12345.ingresar(100);
+		assertEquals(-50, cta12345.getSaldo());
+		
+		cta12345.retirar(200);
+		assertEquals(-250, cta12345.getSaldo());
 
 
 	}
 
 	@Test
 	void test0014_67890() {
-
-		assertFalse(cta67890.retirar(350)); //no hay suficiente dinero para poder sacar
-		assertFalse(cta67890.retirar(200)); //tampoco hay dinero
-		assertFalse(cta67890.retirar(150)); //igual 
-		cta67890.ingresar(50); 
-		assertEquals(50, cta67890.getSaldo()); //debe haber 50
-		assertFalse(cta67890.retirar(100)); //no hay para sacar 100 
-
+		
+		cta67890.retirar(350);
+		assertEquals(-350, cta67890.getSaldo());
+		
+		assertFalse(cta67890.retirar(200));  //no se puede retirar pq quedaria la cuenta en -550
+		
+		cta67890.retirar(150);
+		assertEquals(-500, cta67890.getSaldo());
+		
+		cta67890.ingresar(50);
+		assertEquals(-450, cta67890.getSaldo());
+		
+		assertFalse(cta67890.retirar(100)); //no se puede porque quedaría en -550
 
 	}
 
